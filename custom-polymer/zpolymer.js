@@ -36,6 +36,7 @@ Polymer('add-overlay', {
   }
 });
 
+//////////////////// DETAIL-OVERLAY ////////////////////////////////////////////
 Polymer('detail-overlay', {
   open: function(uid) {
     this.toggle();
@@ -49,6 +50,7 @@ function detailSetParcel(detailCard, uid) {
   });
 }
 
+//////////////////// DHL-LIST ////////////////////////////////////////////
 (function() {
 Polymer('dhl-list', {
   showChanged: function() {
@@ -114,6 +116,7 @@ function compare(a,b) {
   })
 ();
 
+//////////////////// DHL-CARD ////////////////////////////////////////////
 Polymer('dhl-card', {
   created: function(){
     //
