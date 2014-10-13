@@ -1,6 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Track Your Packages",
+  "name": "TrackPack - Track Your Packages easily on all your Computers",
+  "short_name": "TrackPack",
   "description": "",
   "version": "0.1.0",
   "minimum_chrome_version": "23",
