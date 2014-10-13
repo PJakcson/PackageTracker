@@ -1,6 +1,6 @@
 {
   "manifest_version": 2,
-  "name": "PackageTracker prod",
+  "name": "Track Your Packages",
   "description": "",
   "version": "0.1.0",
   "minimum_chrome_version": "23",
