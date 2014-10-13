@@ -1,0 +1,18 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="dhl-card.html">
+
+</head><body><polymer-element name="dhl-list" attributes="show">
+  <template>
+    <div id="card" horizontal="" layout="" wrap="" style="width: 100%" animated="true">
+      <template repeat="{{package in packages}}">
+        <dhl-card parcel="{{package}}">
+          <img src="{{package.logo}}">
+          <h2>{{package.label}}</h2>
+          <p>{{package.status}}</p>
+        </dhl-card>
+      </template>
+    </div>
+  </template>
+  <script src="zpolymer.js"></script>
+</polymer-element>
+</body></html>

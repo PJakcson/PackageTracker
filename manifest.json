@@ -1,0 +1,24 @@
+{
+  "manifest_version": 2,
+  "name": "PackageTracker prod",
+  "description": "",
+  "version": "0.1.0",
+  "minimum_chrome_version": "23",
+  "permissions" : [
+    "storage",
+    "http://127.0.0.1:8000/*",
+    "http://news.google.com/",
+    "http://nolp.dhl.de/*",
+    "https://www.myhermes.de/*",
+    "http://www.trackingex.com/fedex-tracking/*",
+    "http://wwwapps.ups.com/ietracking/*",
+    "webview"
+    ],
+  "icons": { "128": "assets/app_icon.png"
+  },
+  "app": {
+    "background": {
+      "scripts": ["background.js"]
+    }
+  }
+}

@@ -1,0 +1,97 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+
+</head><body><polymer-element name="add-overlay">
+  <template>
+    <core-overlay class="dialog" backdrop="true" layered="true" transition="core-transition-center" opened="{{opened}}" on-keypress="{{keypressHandler}}">
+  	  <style no-shim="">
+			  .dialog {
+					box-sizing: border-box;
+					background: white;
+					min-height: 600px;
+					min-width: 400px;
+					padding:0px;
+					outline: 1px solid rgba(0,0,0,0.2);
+					box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+				}
+				paper-dropdown-menu{
+				  min-width: 100px;
+				}
+				paper-item {
+  			  min-width: 100px;
+				}
+				paper-button {
+				  margin-top: 50px;
+          }
+				paper-input {
+				  margin-bottom:20px;
+				  width: 160px;
+				}
+				core-header-panel {
+				  height: 600px;
+				}
+				.core-header {
+          height: 60px;
+          line-height: 60px;
+          font-size: 24px;
+          padding: 0 10px;
+          background-color: #4F7DC9;
+          color: #FFF;
+          transition: height 0.2s;
+        }
+        .content {
+          padding: 40px;
+        }
+        paper-icon-button {
+          position: absolute !important;
+          top: 0px;
+          right:0.5em;
+          width=100px;
+          height=60px;
+          z-index:1;
+        }
+        .big {
+          height: 50px;
+          width: 50px;
+          position: absolute !important;
+          top: 4px;
+          right:5px;
+          z-index:1;
+          border-radius: 50%;
+          }
+			</style>
+
+  <core-header-panel>
+    <div class="core-header">New Package
+       <!--paper-icon-button iconsrc="{{headericon}}"--><!--/paper-icon-button-->
+       <!--core-icon class="big" src="{{headericon}}"--><!--/core-icon-->
+       <img src="{{headericon}}" class="big" width="70" height="70">
+    </div>
+    <div class="content">
+      <div layout="" horizontal="" center="" style="height: 40px">
+        <span class="" padding-right="10px" style="width: 110px">Package Label:</span>
+        <paper-input floatinglabel="" label="(optional)" value="{{label}}"></paper-input>
+      </div>
+      <div layout="" horizontal="" center="" style="height: 40px">
+        <span class="" padding-right="10px" style="width: 110px" >Tracking Number:</span>
+        <paper-input id="uidInput" floatinglabel="" label="Type only numbers" inputValue="{{uid}}" autofocus></paper-input>
+      </div>
+      <div layout="" horizontal="" center="" style="height: 40px">
+        <span padding-right="10px" style="width: 110px">Delivery Service:</span>
+        <paper-dropdown-menu on-core-select="{{itemSelected}}" selected="{{selected}}" valueattr="service">
+          <paper-item iconsrc="assets/dhl.jpg" service="dhl" label="DHL" disabled></paper-item>
+          <paper-item iconsrc="assets/hermes.jpg" service="hermes" label="Hermes"></paper-item>
+          <paper-item iconsrc="assets/ups.jpg" service="ups" label="UPS"></paper-item>
+          <paper-item iconsrc="assets/fedex.jpg" service="fedex" label="Fedex"></paper-item>
+        </paper-dropdown-menu>
+      </div>
+      <paper-button core-overlay-toggle on-click="{{confirm}}" label="Add to Packages" raisedbutton=""></paper-button>
+    </div>
+  </core-header-panel>
+    </core-overlay>
+  </template>
+  <script src="zpolymer.js"></script>
+</polymer-element>
+</body></html>

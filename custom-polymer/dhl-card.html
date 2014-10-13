@@ -1,0 +1,71 @@
+<html><head><link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/paper-menu-button/paper-menu-button.html">
+
+</head><body><polymer-element name="dhl-card" on-mouseover="{{onHover}}" on-mouseout="{{onOut}}"  attributes="parcel">
+  <template>
+    <style>
+    :host {
+      display: block;
+      position: relative;
+      background-color: white;
+      width: 350px;
+      min-width: 350px;
+      margin-top: 15px;
+      margin-left:15px;
+    }
+    .container {
+      position: relative;
+      background-color: white;
+      height: 130px;
+      padding: 10px;
+    }
+    .buttons {
+      position: absolute !important;
+      top: 0px;
+      right:0.5em;
+      z-index:10;
+    }
+    .card-header {
+      -webkit-user-select: text;
+    }
+    polyfill-next-selector { content: '.card-header h2'; }
+    .card-header ::content h2 {
+      margin: 0;
+      font-size: 1.2rem;
+      font-weight: 300;
+    }
+    polyfill-next-selector { content: '.card-header img'; }
+    .card-header ::content img {
+      width:70px;
+      min-width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      margin: 10px;
+    }
+    paper-ripple {
+      color: #4285f4;
+    }
+
+    </style>
+
+    <paper-shadow z="{{raise}}" animated="true"></paper-shadow>
+    <div class="buttons" layout="" horizontal="" right="0px">
+      <paper-icon-button icon="create" on-click="{{edit}}"></paper-icon-button>
+      <paper-icon-button icon="refresh" on-click="{{refresh}}"></paper-icon-button>
+      <paper-icon-button icon="clear" on-click="{{clear}}"></paper-icon-button>
+     </div>
+
+  <div class="container" on-click="{{packageClick}}" >
+     <paper-ripple class="circle recenteringTouch" fit=""></paper-ripple>
+     <div class="card-header" layout="" horizontal="" center="">
+        <content select="img"></content>
+        <content select="h2"></content>
+      </div>
+      <content></content>
+    </div>
+  </template>
+  <script src="zpolymer.js"></script>
+  <!script src="../main.js"><!/script>
+</polymer-element>
+</body></html>

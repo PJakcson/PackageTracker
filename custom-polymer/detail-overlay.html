@@ -1,0 +1,67 @@
+<html><head>
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/google-map/google-map.html">
+
+</head>
+<body><polymer-element name="detail-overlay" backdrop="true" layered="true"
+transition="core-transition-center" on-core-overlay-open-completed="{{completed}}"
+constructor="detailOverlay" extends="core-overlay" attributes="parcel"
+on-finished-loading="{{finished_loading}}" on-package-loaded="{{package_loaded}}">
+  <template>
+    <!--core-overlay core-overlay-open-completed="{{completed}}" on-test="" class="dialog" backdrop="true" layered="true" transition="core-transition-center" opened="{{opened}}"-->
+  	  <style no-shim="">
+			  .dialog {
+					box-sizing: border-box;
+					background: white;
+					min-height: 300px;
+					width: 600px;
+					padding: 30px;
+					outline: 1px solid rgba(0,0,0,0.2);
+					box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+				}
+				.description {
+    			width: 100%;
+				  height: 100%;
+				  padding: 15px;
+				}
+				#map {
+				  position: absolute;
+				  right: 0px;
+				  width: 40%;
+				  height: 100%;
+				}
+				paper-input {
+				  margin-left: 60px;
+				  margin-bottom:20px;
+				  width: 160px;
+				}
+				google-map {
+          display: block;
+          width: 100%;
+          height: 600px;
+        }
+			</style>
+
+			<div class="dialog" layout="" horizontal="">
+			  <!webview id="foo" src="http://www.google.com/" style="width:100%; height:100%"></webview>
+			  <div class="description" layout="" vertical="">
+			  <h1>{{parcel.label}}</h1>
+        <table style="width:100%">
+          <template repeat="{{event in parcel.events}}">
+          <tr>
+            <td style="font-weight:bold">{{event.date}}: </td>
+            <td>{{event.status}}</td>
+            <td>{{event.city}}</td>
+          </tr>
+          </template>
+          </table>
+          </div>
+          <!--div id="map"--><!--/div-->
+      </div>
+    <!--/core-overlay-->
+
+  <script src="zpolymer.js"></script>
+</polymer-element></body></html>

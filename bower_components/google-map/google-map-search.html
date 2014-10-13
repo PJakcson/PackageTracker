@@ -1,0 +1,30 @@
+<!-- Copyright (c) 2014 Google Inc. All rights reserved. --><html><head><link rel="import" href="../polymer/polymer.html">
+
+<!--
+Provides Google Maps Places API functionality.
+
+See https://developers.google.com/maps/documentation/javascript/places for more
+information on the API.
+
+#### Example:
+
+    <template is="auto-binding">
+      <google-map-search map="{{map}}" query="Pizza"
+                         result="{{result}}"></google-map-search>
+      <google-map map="{{map}}" latitude="37.779"
+                  longitude="-122.3892"></google-map>
+      <div>Result: {{result.latitude}}, {{result.longitude}}</div>
+    </template>
+    <script>
+      document.querySelector('google-map-search').search();
+    </script>
+
+@element google-map-search
+@status alpha
+@homepage http://googlewebcomponents.github.io/google-map/
+-->
+
+</head><body><polymer-element name="google-map-search" attributes="query result map">
+  <script src="google-map-search.html.0.js"></script>
+</polymer-element>
+</body></html>

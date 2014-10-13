@@ -1,0 +1,37 @@
+body {
+  font-family: sans-serif;
+   -webkit-user-select: text;
+}
+#navheader {
+  background-color: #FFCC00;
+  color: #CC0000;
+  font-size:250%;
+}
+
+.container {
+    min-width: 500px;
+  }
+
+paper-fab {
+  position: absolute !important;
+  top: 35px;
+  right:0.5em;
+  z-index:1;
+  color: #FFFFFF
+}
+
+core-menu {
+  font-size:120%;
+}
+
+
+@media (min-width: ) {
+  #tabs {
+    width: 200px;
+  }
+  .container {
+    min-width: 500px;
+  }
+
+}
+
