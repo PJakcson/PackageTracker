@@ -14,7 +14,7 @@ function dhlUpdateSingle(parcel) {
       try {
         var table = doc.getElementById('collapse-events-' + parcel['piece_identifier'] + '_1');
         var tableRows = table.getElementsByTagName('tbody')[0].children;
-        parseRows(tableRows, parcel);
+        dhlParseRows(tableRows, parcel);
       } catch (e) {
         console.log(e);
         parcel.status = 'parcel not found';
@@ -27,19 +27,28 @@ function dhlUpdateSingle(parcel) {
   xmlHttp.send();
 }
 
-function parseRows(r, p) {
+function dhlParseRows(r, p) {
   p['events'] = [];
   for (i=0; i<r.length; i++) {
     event = {
       date: r[i].children[0].innerHTML.replace(/(\r\n|\n|\r|\t)/gm,""),
       city: r[i].children[1].innerHTML.replace(/(\r\n|\n|\r|\t)/gm,"") ,
-      status: r[i].children[2].innerHTML.replace(/(\r\n|\n|\r|\t)/gm,"")
+      status: r[i].children[2].innerHTML.replace(/(\r\n|\n|\r|\t)/gm,""),
+      img: '../assets/detail_page/elem2sm.png'
     };
+    if (i==0) {
+      event.img = '../assets/detail_page/elem1sm.png';
+    }
+    if(isDelivered(event.status)) {
+      p.delivered = true;
+      event.img = '../assets/detail_page/elem3sm.png';
+    }
     p.events.push(event);
   }
-  if(event.status == 'The shipment has been successfully delivered' ||
-    event.status == 'Die Sendung wurde erfolgreich zugestellt.') {
-    p.delivered = true;
-  }
   p.status = event.status;
+}
+
+function isDelivered(stat) {
+  return (stat == 'The shipment has been successfully delivered' ||
+    stat == 'Die Sendung wurde erfolgreich zugestellt.')
 }
