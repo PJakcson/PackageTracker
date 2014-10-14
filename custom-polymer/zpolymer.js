@@ -7,9 +7,9 @@ Polymer('add-overlay', {
   created: function() {
     this.addEventListener("keypress", function() {
     if (event.keyCode == 13) console.log('enter');
+
     });
-  }
-  ,
+  },
   itemSelected: function(e, detail) {
       this.headericon = 'assets/' + this.selected + '.jpg';
   },
@@ -39,15 +39,73 @@ Polymer('add-overlay', {
 //////////////////// DETAIL-OVERLAY ////////////////////////////////////////////
 Polymer('detail-overlay', {
   open: function(uid) {
+    console.log(this);
     this.toggle();
     detailSetParcel(this, uid);
-  }
+  },
+  domReady: function() {
+    console.log('asdf');
+  },
+  resizeHandler: function() {
+  },
 });
 
 function detailSetParcel(detailCard, uid) {
   chrome.storage.sync.get(uid, function(p) {
     detailCard.parcel = p[uid];
-  });
+    createTable(detailCard);
+    });
+}
+
+function createTable(detailCard) {
+
+  var events = detailCard.parcel.events.reverse();
+  var table = detailCard.$.table;
+
+  while (table.children[1]) {
+    table.removeChild(table.children[1]);
+  }
+
+  var tr = document.createElement('tr');
+  tr.appendChild(document.createElement('th'));
+  tr.appendChild(document.createElement('th'));
+  tr.appendChild(document.createElement('th'));
+  tr.appendChild(document.createElement('th'));
+
+  for (e in events) {
+    var tr = document.createElement('tr');
+    var picRes = '../assets/detail_page/elem2sm.png';
+
+    if (e == events.length-1) picRes = '../assets/detail_page/elem1sm.png';
+    if (e==0 && detailCard.parcel.delivered) picRes = '../assets/detail_page/elem3sm.png';
+
+
+    var pic = document.createElement('td');
+    pic.setAttribute('class', 'pic');
+    var img = document.createElement('img');
+    img.setAttribute('src', picRes);
+    img.setAttribute('class', (e!=events.length-1)? 'normalImg' : 'lastImg');
+    pic.appendChild(img);
+
+    var date = document.createElement('td');
+    date.setAttribute('class', 'date');
+    date.innerHTML = events[e].date;
+
+    var status = document.createElement('td');
+    status.setAttribute('class', 'status');
+    status.innerHTML = events[e].status;
+
+    var city = document.createElement('td');
+    city.setAttribute('class', 'city');
+    city.innerHTML = events[e].city;
+
+    tr.appendChild(pic);
+    tr.appendChild(date);
+    tr.appendChild(status);
+    tr.appendChild(city);
+
+    table.appendChild(tr);
+  }
 }
 
 //////////////////// DHL-LIST ////////////////////////////////////////////
