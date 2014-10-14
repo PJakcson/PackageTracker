@@ -13,7 +13,11 @@
 >>>>>>> origin/alpha
 =======
   "description": "Manage all your packages from different delivery services in one app.",
+<<<<<<< HEAD
   "version": "0.2.1",
+>>>>>>> origin/alpha
+=======
+  "version": "0.2.2",
 >>>>>>> origin/alpha
   "minimum_chrome_version": "23",
   "permissions" : [
