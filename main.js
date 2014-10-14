@@ -37,7 +37,6 @@ var refresh = document.querySelector('paper-icon-button');
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   console.log(changes);
   chrome.storage.sync.getBytesInUse('packages', function(b) {
-
   });
   console.log('Change! Change!');
   list.update();
@@ -81,6 +80,7 @@ function addPackageToStorage(parcel) {
   obj[name] = parcel;
   chrome.storage.sync.set(obj, function() {
     console.log('neues Paket hinzugefügt');
+    update(parcel);
   });
 }
 
