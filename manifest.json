@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "TrackPack - Track Your Packages easily",
   "short_name": "TrackPack",
-  "description": "Manage all your packages from different services in one app.",
-  "version": "0.1.1",
+  "description": "Manage all your packages from different delivery services in one app.",
+  "version": "0.2.1",
   "minimum_chrome_version": "23",
   "permissions" : [
     "storage",
