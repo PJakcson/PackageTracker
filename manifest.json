@@ -1,24 +1,9 @@
 {
   "manifest_version": 2,
-<<<<<<< HEAD
-  "name": "Track Your Packages",
-  "description": "",
-  "version": "0.1.0",
-=======
   "name": "TrackPack - Track Your Packages easily",
   "short_name": "TrackPack",
-<<<<<<< HEAD
-  "description": "Manage all your packages from different services in one app.",
-  "version": "0.1.1",
->>>>>>> origin/alpha
-=======
   "description": "Manage all your packages from different delivery services in one app.",
-<<<<<<< HEAD
-  "version": "0.2.1",
->>>>>>> origin/alpha
-=======
   "version": "0.2.2",
->>>>>>> origin/alpha
   "minimum_chrome_version": "23",
   "permissions" : [
     "storage",
