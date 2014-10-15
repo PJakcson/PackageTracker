@@ -3,8 +3,8 @@ body {
    -webkit-user-select: text;
 }
 #navheader {
-  background-color: #FFCC00;
-  color: #CC0000;
+  background-color: #c5cae9;
+  color: #1a237e;
   font-size:250%;
 }
 
@@ -17,11 +17,26 @@ paper-fab {
   top: 35px;
   right:0.5em;
   z-index:1;
-  color: #FFFFFF
+  color: #FFFFFF;
+  background: #00897b;
 }
 
 core-menu {
+  font-size:100%;
+  padding: 0px;
+  margin: 0px;
+
+}
+
+core-item {
   font-size:120%;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+
+  border-bottom: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
 }
 
 

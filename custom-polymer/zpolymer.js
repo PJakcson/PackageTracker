@@ -39,7 +39,6 @@ Polymer('add-overlay', {
 //////////////////// DETAIL-OVERLAY ////////////////////////////////////////////
 Polymer('detail-overlay', {
   open: function(uid) {
-    console.log(this);
     this.toggle();
     detailSetParcel(this, uid);
   },

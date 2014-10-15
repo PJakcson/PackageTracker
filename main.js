@@ -7,8 +7,16 @@ var menu = document.querySelector('core-menu');
 menu.addEventListener('core-select', function(e) {
     title.innerHTML = e.detail.item.label;
     list.show = e.detail.item.id;
+    if(e.detail.isSelected) {
+      e.detail.item.style.color = '#ffffff';
+      e.detail.item.style.background = '#00796b';
+    }
+    if(!e.detail.isSelected) {
+      e.detail.item.style.color = '#000000';
+      e.detail.item.style.background = '#ffffff';
+    }
     container.style.display = "block";
-  });
+});
 
 window.onload = updateAll();
 
