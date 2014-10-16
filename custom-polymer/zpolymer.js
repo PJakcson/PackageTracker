@@ -27,7 +27,6 @@ Polymer('add-overlay', {
   },
   open: function() {
     this.opened = true;
-    console.log(this.$);
 
   },
   uidChanged: function() {
@@ -41,9 +40,6 @@ Polymer('detail-overlay', {
   open: function(uid) {
     this.toggle();
     detailSetParcel(this, uid);
-  },
-  domReady: function() {
-    console.log('asdf');
   },
   resizeHandler: function() {
   },

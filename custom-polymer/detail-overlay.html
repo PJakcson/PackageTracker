@@ -15,11 +15,12 @@ on-finished-loading="{{finished_loading}}" on-package-loaded="{{package_loaded}}
   	  <style no-shim="">
   	    :host {
   	      width: 60%;
-  	      height: 60%;
+  	      max-height: 60%;
   	      min-width: 580px;
-  	      min-height: 600px;
-  	      top: 25%;
+  	      min-height: 50px;
+  	      top: 20%;
   	      left: 20%;
+  	      overflow: auto;
   	    }
 			  .dialog {
 					box-sizing: border-box;
@@ -54,10 +55,10 @@ on-finished-loading="{{finished_loading}}" on-package-loaded="{{package_loaded}}
           font-weight: bold;
         }
         .status {
-          min-width: 300px;
+          min-width: 250px;
         }
         .city {
-          min-width: 100px;
+          min-width: 80px;
           width:100px;
           text-align: top;
         }
