@@ -1,5 +1,5 @@
 function fedexUpdateSingle(parcel) {
-  var url = 'http://www.trackingex.com/fedex-tracking/';
+  var url = 'http://www.trackingex.com/fedex-tracking/' + parcel['piece_identifier'] + '.html';
 
   var xmlHttp = null;
   xmlHttp = new XMLHttpRequest();
@@ -20,12 +20,12 @@ function fedexUpdateSingle(parcel) {
         console.log(e);
         parcel.status = 'parcel not found';
       } finally {
+        parcel.directLink = 'http://www.fedex.com/Tracking?action=track&tracknumbers=' + parcel.piece_identifier;
         updateStorage(parcel);
       }
     }
   }
-  console.log('' + url + parcel['piece_identifier']+'.html');
-  xmlHttp.open( "POST", '' + url + parcel['piece_identifier']+'.html', true );
+  xmlHttp.open( "POST", url, true );
   xmlHttp.send();
 }
 

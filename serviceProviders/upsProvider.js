@@ -1,5 +1,5 @@
 function upsUpdateSingle(parcel) {
-  var url = 'http://wwwapps.ups.com/ietracking/tracking.cgi?';
+  var url = 'http://wwwapps.ups.com/ietracking/tracking.cgi?tracknum=' + parcel['piece_identifier'];
 
   var xmlHttp = null;
   xmlHttp = new XMLHttpRequest();
@@ -20,11 +20,12 @@ function upsUpdateSingle(parcel) {
         console.log(e);
         parcel.status = 'parcel not found';
       } finally {
+        parcel.directLink = url;
         updateStorage(parcel);
       }
     }
   }
-  xmlHttp.open( "POST", '' + url + 'tracknum=' + parcel['piece_identifier'], true );
+  xmlHttp.open( "POST", url, true );
   xmlHttp.send();
 }
 

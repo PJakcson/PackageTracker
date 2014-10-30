@@ -62,13 +62,28 @@ on-finished-loading="{{finished_loading}}" on-package-loaded="{{package_loaded}}
           width:100px;
           text-align: top;
         }
+        #header {
+          vertical-align:bottom;
+        }
+        #h_label {
+          font-size: 250%;
+          margin-right: 10px;
+        }
+        #h_uid {
+          font-size: 120%;
+          height: 32px;
+        }
+
 
 			</style>
 
 			<div class="dialog" layout="" horizontal="">
 			  <!webview id="foo" src="http://www.google.com/" style="width:100%; height:100%"></webview>
-			  <div class="description" layout="" vertical="">
-			  <h1>{{parcel.label}}</h1>
+			  <div class="description" layout="" vertical="" >
+			  <p id="header">
+			    <span id="h_label">{{parcel.label}}</span>
+			    <a href="" id="h_number" on-tap="{{openlink}}"></a>
+        </p>
         <table id="table" style="width:100%" cellpadding="0">
           <tr>
             <th></th>

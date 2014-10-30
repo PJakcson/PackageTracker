@@ -1,8 +1,8 @@
 function dhlUpdateSingle(parcel) {
-  var url = 'http://nolp.dhl.de/nextt-online-public/set_identcodes.do?';
 
   var xmlHttp = null;
   xmlHttp = new XMLHttpRequest();
+  var url = 'http://nolp.dhl.de/nextt-online-public/set_identcodes.do?' + 'lang=' + 'en' + '&idc=' + parcel['piece_identifier'] + '&rfn=&extendedSearch=true';
 
   xmlHttp.onreadystatechange=function()
   {
@@ -19,11 +19,12 @@ function dhlUpdateSingle(parcel) {
         console.log(e);
         parcel.status = 'parcel not found';
       } finally {
+        parcel.directLink = url;
         updateStorage(parcel);
       }
     }
   }
-  xmlHttp.open( "GET", '' + url + 'lang=' + 'en' + '&idc=' + parcel['piece_identifier'] + '&rfn=&extendedSearch=true', true );
+  xmlHttp.open( "GET", url, true );
   xmlHttp.send();
 }
 

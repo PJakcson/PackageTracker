@@ -1,6 +1,6 @@
 
 function hermesUpdateSingle(parcel) {
-  var url = 'https://www.myhermes.de/wps/portal/paket/SISYR?';
+  var url = 'https://www.myhermes.de/wps/portal/paket/SISYR?auftragsNummer=' + parcel['piece_identifier'];
 
   var xmlHttp = null;
   xmlHttp = new XMLHttpRequest();
@@ -22,11 +22,12 @@ function hermesUpdateSingle(parcel) {
         console.log(e);
         parcel.status = 'parcel not found';
       } finally {
+        parcel.directLink = url;
         updateStorage(parcel);
       }
     }
   }
-  xmlHttp.open( "POST", '' + url + 'auftragsNummer=' + parcel['piece_identifier'], true );
+  xmlHttp.open( "POST", url, true );
   xmlHttp.send();
 }
 

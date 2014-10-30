@@ -57,7 +57,7 @@ function addNewPackage(service, uid, label) {
 }
 
 function update(parcel) {
-    if (parcel['delivered']) return;
+    //if (parcel['delivered']) return;
     switch (parcel['service']) {
       case 'dhl':
         dhlUpdateSingle(parcel);
@@ -102,10 +102,11 @@ function updateStorage(parcelNew) {
 }
 
 function genericParcel(service, uid, label) {
-  if (label == '') label = 'Package No.: ' + uid;
+  if (label == '') label = 'Tracking #: ' + uid;
   var parcel = {piece_identifier: uid, language: 'en', events: [],
           service: service, logo: 'assets/' + service +'.jpg', status: '',
-          delivered: false, label: label, timeAdded: new Date().getTime()
+          delivered: false, label: label, timeAdded: new Date().getTime(),
+          directLink : ''
           };
           console.log(parcel);
   return parcel;

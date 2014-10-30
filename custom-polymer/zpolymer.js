@@ -41,6 +41,9 @@ Polymer('detail-overlay', {
     this.toggle();
     detailSetParcel(this, uid);
   },
+  openlink: function() {
+    window.open(this.parcel.directLink);
+  },
   resizeHandler: function() {
   },
 });
@@ -48,6 +51,18 @@ Polymer('detail-overlay', {
 function detailSetParcel(detailCard, uid) {
   chrome.storage.sync.get(uid, function(p) {
     detailCard.parcel = p[uid];
+
+    //var hd = detailCard.$.header;
+    //if (hd.children.length > 1) hd.removeChild(hd.children[1]);
+    var sp = detailCard.$.h_number;
+    sp.setAttribute('id', 'h_uid');
+    //window.open('http://google.com');
+    if (p[uid].label.search(p[uid].piece_identifier) < 0) {
+      sp.innerHTML = '(Tracking #: ' + p[uid].piece_identifier + ')';
+      //hd.appendChild(sp);
+    } else {
+      sp.innerHTML = 'directlink';
+    }
     createTable(detailCard);
     });
 }
