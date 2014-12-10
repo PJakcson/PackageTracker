@@ -71,6 +71,9 @@ function update(parcel) {
       case 'fedex':
         fedexUpdateSingle(parcel);
         break;
+      case 'dpd':
+        dpdUpdateSingle(parcel);
+        break;
   }
 }
 

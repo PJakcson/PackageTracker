@@ -31,7 +31,7 @@ Polymer('add-overlay', {
   },
   uidChanged: function() {
     //if (this.uid.length <= 12) this.selected = 'dhl';
-    if (this.uid.length > 12) this.selected = 'hermes';
+    //if (this.uid.length > 12) this.selected = 'hermes';
   }
 });
 
