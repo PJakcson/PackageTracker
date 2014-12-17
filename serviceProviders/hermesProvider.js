@@ -42,11 +42,10 @@ function hermesParseRows(r, p) {
     };
     p['events'].push(event);
   }
-  console.log(event['status']);
-  if(event['status'] == 'Die Sendung wurde zugestellt. ' ||
-    event['status'] == 'The shipment has been successfully delivered') {
-    p['delivered'] = true;
-    console.log('geliefert');
-  }
+  p['delivered'] = hermesIsDelivered(event.status);
   p['status'] = event['status'];
+}
+
+function hermesIsDelivered(stat) {
+  return (stat.indexOf('elivered')>=0 || stat.indexOf('ugestellt')>=0);
 }

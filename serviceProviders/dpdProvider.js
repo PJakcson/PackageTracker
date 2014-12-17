@@ -39,11 +39,10 @@ function dpdParseRows(c, d, s, p) {
     };
     p['events'].push(event);
   }
-  console.log(event['status']);
-  if(event['status'] == 'Delivered' ||
-    event['status'] == 'The shipment has been successfully delivered') {
-    p['delivered'] = true;
-    console.log('geliefert');
-  }
+  p['delivered'] = dpdIsDelivered(event.status);
   p['status'] = event['status'];
+}
+
+function dpdIsDelivered(stat) {
+  return (stat.indexOf('elivered')>=0 || stat.indexOf('ugestellt')>=0);
 }

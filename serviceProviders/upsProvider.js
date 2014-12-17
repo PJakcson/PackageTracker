@@ -37,10 +37,10 @@ function upsParseRows(r, p) {
       status: r[3].innerHTML.replace(/(\r\n|\n|\r|\t)/gm,"")
     };
   if (p.status != event.status)  p['events'].push(event);
-  if(event['status'] == 'Delivered' ||
-    event['status'] == 'The shipment has been successfully delivered') {
-    p['delivered'] = true;
-    console.log('geliefert');
-  }
+  p['delivered'] = upsIsDelivered(event.status);
   p['status'] = event['status'];
+}
+
+function upsIsDelivered(stat) {
+  return (stat.indexOf('elivered')>=0 || stat.indexOf('ugestellt')>=0);
 }

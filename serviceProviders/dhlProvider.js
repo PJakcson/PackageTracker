@@ -40,16 +40,12 @@ function dhlParseRows(r, p) {
     if (i==0) {
       event.img = '../assets/detail_page/elem1sm.png';
     }
-    if(isDelivered(event.status)) {
-      p.delivered = true;
-      event.img = '../assets/detail_page/elem3sm.png';
-    }
+    p['delivered'] = dhlIsDelivered(event.status);
     p.events.push(event);
   }
   p.status = event.status;
 }
 
-function isDelivered(stat) {
-  return (stat == 'The shipment has been successfully delivered' ||
-    stat == 'Die Sendung wurde erfolgreich zugestellt.')
+function dhlIsDelivered(stat) {
+  return (stat.indexOf('elivered')>=0 || stat.indexOf('ugestellt')>=0);
 }

@@ -3,7 +3,7 @@
   "name": "TrackPack - Track Your Packages easily",
   "short_name": "TrackPack",
   "description": "Manage all your packages from different delivery services in one app.",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "minimum_chrome_version": "23",
   "permissions" : [
     "storage",
