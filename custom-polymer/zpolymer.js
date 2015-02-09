@@ -140,6 +140,7 @@ function updateList(list, show) {
     case 'all': getAllPackages(list); break;
     case 'received': getReceivedPackages(list); break;
     case 'underway': getUnderwayPackages(list); break;
+    case 'trash': getDeletedPackages(list); break;
   }
 }
 
@@ -147,7 +148,7 @@ function getAllPackages(list) {
     chrome.storage.sync.get(null, function(p) {
       var num_array = new Array();
       for (var items in p){
-        num_array.push(p[items]);
+        if (!p[items]['trash']) num_array.push(p[items]);
       }
       list.packages = num_array.sort(compare);
     });
@@ -157,7 +158,7 @@ function getReceivedPackages(list) {
     chrome.storage.sync.get(null, function(p) {
       var num_array = new Array();
       for (var items in p){
-        if (p[items]['delivered']) num_array.push(p[items]);
+        if (p[items]['delivered'] && !p[items]['trash']) num_array.push(p[items]);
       }
       list.packages = num_array.sort(compare);
     });
@@ -167,7 +168,17 @@ function getUnderwayPackages(list) {
     chrome.storage.sync.get(null, function(p) {
       var num_array = new Array();
       for (var items in p){
-        if (!p[items]['delivered']) num_array.push(p[items]);
+        if (!p[items]['delivered']  && !p[items]['trash']) num_array.push(p[items]);
+      }
+      list.packages = num_array.sort(compare);
+    });
+  }
+
+function getDeletedPackages(list) {
+    chrome.storage.sync.get(null, function(p) {
+      var num_array = new Array();
+      for (var items in p){
+        if (p[items]['trash']) num_array.push(p[items]);
       }
       list.packages = num_array.sort(compare);
     });
@@ -218,7 +229,11 @@ Polymer('dhl-card', {
   },
   clear: function(e, detail) {
     var list = document.querySelector('dhl-list');
-    list.fire('editParcel', {action: 'delete',parcel: this.parcel});
+    if (!this.parcel['trash']) {
+      list.fire('editParcel', {action: 'trash',parcel: this.parcel});
+    }
+    else
+      list.fire('editParcel', {action: 'delete',parcel: this.parcel});
   }
 });
 

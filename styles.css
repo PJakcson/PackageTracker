@@ -41,12 +41,20 @@ core-item {
   padding-left: 20px;
   padding-top: 5px;
   padding-bottom: 5px;
-
   border-bottom: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
+#trash {
+  width: 100%;
+  position: absolute;
+  bottom:0;
+  border-top: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-width: 0px;
+}
 
 @media (min-width: ) {
   #tabs {
